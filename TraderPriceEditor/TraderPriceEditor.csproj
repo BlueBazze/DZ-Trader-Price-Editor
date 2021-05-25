@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net462</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>previewfile_1590841260.ico</ApplicationIcon>
+    <StartupObject />
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>

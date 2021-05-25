@@ -1,0 +1,51 @@
+﻿<Window x:Class="TraderPriceEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TraderPriceEditor"
+        mc:Ignorable="d"
+        Title="Trader Price Editor" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="128*"/>
+            <ColumnDefinition Width="135*"/>
+            <ColumnDefinition Width="537*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.ColumnSpan="3">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" Click="BtnLoad"/>
+                <MenuItem Header="_Save" Click="BtnSave"/>
+            </MenuItem>
+        </Menu>
+        <DataGrid AllowDrop="True" Grid.Row="2" Grid.Column="0" x:Name="datagridTraders" ItemsSource="{Binding LootTable.Traders}" AutoGenerateColumns="False" SelectionChanged="datagridTraders_SelectionChanged" SelectionMode="Single" HeadersVisibility="Column" PreviewMouseDown="dgOrganiser_PreviewMouseLeftButtonDown" Drop="dg_drop" CanUserAddRows="False" RowEditEnding="datagrid_RowEditEnding">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Trader Name" Binding="{Binding Path=Name}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <DataGrid Grid.Row="3" Grid.Column="1" x:Name="datagridCategories" AutoGenerateColumns="False" SelectionChanged="datagridCategories_SelectionChanged" SelectionMode="Single" HeadersVisibility="Column" PreviewMouseDown="dgOrganiser_PreviewMouseLeftButtonDown" AllowDrop="True" Drop="dg_drop" CanUserAddRows="False" RowEditEnding="datagrid_RowEditEnding">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Category Name" Binding="{Binding Path=Name}" Width="*" CanUserResize="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Grid.Row="3" Grid.Column="2" x:Name="datagridItems" AutoGenerateColumns="False"  HeadersVisibility="Column" CanUserResizeColumns="True" PreviewMouseDown="dgOrganiser_PreviewMouseLeftButtonDown" AllowDrop="True" Drop="dg_drop" SelectionChanged="datagridItems_SelectionChanged" CanUserAddRows="False" RowEditEnding="datagrid_RowEditEnding" ManipulationCompleted="datagridItems_ManipulationCompleted">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Class Name" Binding="{Binding Path=Name}" Width="*" CanUserResize="True"/>
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Path=Quantity}" Width="*" CanUserResize="True"/>
+                <DataGridTextColumn Header="BuyValue" Binding="{Binding Path=BuyValue}" Width="*" CanUserResize="True"/>
+                <DataGridTextColumn Header="SellValue" Binding="{Binding Path=SellValue}" Width="*" CanUserResize="True"/>
+                <DataGridTextColumn Header="Disabled" Binding="{Binding Path=Enabled}" Width="*" CanUserResize="True"/>
+                <DataGridTextColumn Header="Comment" Binding="{Binding Path=Comment}" Width="*" CanUserResize="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+
+</Window>
